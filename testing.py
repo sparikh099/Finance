@@ -1,5 +1,6 @@
 import functools
 from pathlib import Path
+
 import streamlit as st
 from st_aggrid import AgGrid
 from st_aggrid.shared import JsCode
@@ -1173,7 +1174,7 @@ def main() -> None:
         strikePrice = float(st.number_input("Enter the Strike Price"))
         time = float(st.number_input("Enter the Time to Expiration in Years"))
         riskFreeRate = float(st.number_input("Enter the Risk Free Rate"))
-        if(ticker != None and strikePrice != None and time != None and riskFreeRate != None):
+        if(bool(ticker)and bool(strikePrice) and bool(time) and bool(riskFreeRate)):
             st.markdown(
                 f"""
                 * Ticker Symbol: {ticker}
@@ -1187,38 +1188,39 @@ def main() -> None:
     except:
         pass
     try:
-        st.subheader('1st Degree Taylor Polynomial Call vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks1st())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Call Option Price$")
-        st.subheader('1st Degree Taylor Polynomial Put vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut1st())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Put Option Price$")
-        st.subheader('2nd Degree Taylor Polynomial  Call vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks2nd())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Call Option Price$")
-        st.subheader('2nd Degree Taylor Polynomial Put vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut2nd())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Put Option Price$")
-        st.subheader('4th Degree Taylor Polynomial Call vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks4th())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Call Option Price$")
-        st.subheader('4th Degree Taylor Polynomial Put vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut4th())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Put Option Price$")
-        st.subheader('8th Degree Taylor Polynomial Call vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks8th())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Call Option Price$")
-        st.subheader('8th Degree Taylor Polynomial Put vs. Black-Scholes Model')
-        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut8th())
-        st.write("X Axis: Time to Expiration(Years)")
-        st.write("Y Axis: Put Option Price$")
+        if(bool(ticker)and bool(strikePrice) and bool(time) and bool(riskFreeRate)):
+            st.subheader('1st Degree Taylor Polynomial Call vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks1st())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Call Option Price$")
+            st.subheader('1st Degree Taylor Polynomial Put vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut1st())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Put Option Price$")
+            st.subheader('2nd Degree Taylor Polynomial  Call vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks2nd())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Call Option Price$")
+            st.subheader('2nd Degree Taylor Polynomial Put vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut2nd())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Put Option Price$")
+            st.subheader('4th Degree Taylor Polynomial Call vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks4th())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Call Option Price$")
+            st.subheader('4th Degree Taylor Polynomial Put vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut4th())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Put Option Price$")
+            st.subheader('8th Degree Taylor Polynomial Call vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks8th())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Call Option Price$")
+            st.subheader('8th Degree Taylor Polynomial Put vs. Black-Scholes Model')
+            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut8th())
+            st.write("X Axis: Time to Expiration(Years)")
+            st.write("Y Axis: Put Option Price$")
     except:
         pass
 #    def draw_bar(y_val: str) -> None:
