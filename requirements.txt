@@ -1,3 +1,10 @@
 plotly
 streamlit
 streamlit-aggrid
+yfinance
+pandas
+math
+scipy
+scikit-learn
+numpy
+sympy
