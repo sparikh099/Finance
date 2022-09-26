@@ -1,6 +1,10 @@
+#Shyam Parikh
+# June 13, 2022
+#AP Computer Science Period 7
+#Python - 3.9.7
+#Importing all the libraries necessary for this project
 import functools
 from pathlib import Path
-
 import streamlit as st
 from st_aggrid import AgGrid
 from st_aggrid.shared import JsCode
@@ -384,20 +388,20 @@ class ProfitableSort:
         #self.data = pd.DataFrame(columns = ['Ticker','1 Day %Change','5 Day %Change','1 Month %Change','6 Month %Change' ,'1 Year %Change', '5 Year %Change'])
         for c in range(len(arr)):
             dayChange.append(arr[c].get1dChange())
-            dayChange2.append(arr[c].get5dChange())
+            #dayChange2.append(arr[c].get5dChange())
             monthChange.append(arr[c].get1mChange())
-            monthChange2.append(arr[c].get6mChange())
+            #monthChange2.append(arr[c].get6mChange())
             yearChange.append(arr[c].get1yChange())
-            yearChange2.append(arr[c].get5yChange())
+            #yearChange2.append(arr[c].get5yChange())
         print(dayChange)
 
             #df = self.data.append({'Ticker':arr[c].getTicker(),'1 Day %Change':arr[c].get1dChange(),'5 Day %Change':arr[c].get5dChange(),'1 Month %Change':arr[c].get1mChange(),'6 Month %Change':arr[c].get6mChange(),'1 Year %Change':arr[c].get1yChange(),'5 Year %Change':arr[c].get5yChange()},ignore_index = True)
         df['1 Day %Change'] = dayChange
-        df['5 Day %Change'] = dayChange2
+        #df['5 Day %Change'] = dayChange2
         df['1 Month %Change'] = monthChange
-        df['6 Month %Change'] = monthChange2
+        #df['6 Month %Change'] = monthChange2
         df['1 Year %Change'] = yearChange
-        df['5 Year %Change'] = yearChan
+        #df['5 Year %Change'] = yearChan
         return df
     def returnDf(self):
         df2 = self.data
@@ -416,27 +420,27 @@ class ProfitableSort:
                 newArr.append(arr[z])
                 price.append(arr[z].getCurrPrice())
                 dayChange.append(arr[z].get1dChange())
-                dayChange2.append(arr[z].get5dChange())
+                #dayChange2.append(arr[z].get5dChange())
                 monthChange.append(arr[z].get1mChange())
-                monthChange2.append(arr[z].get6mChange())
+                #monthChange2.append(arr[z].get6mChange())
                 yearChange.append(arr[z].get1yChange())
-                yearChange2.append(arr[z].get5yChange())
+                #yearChange2.append(arr[z].get5yChange())
             except:
                 newArr.append(np.nan)
                 price.append(np.nan)
                 dayChange.append(np.nan)
-                dayChange2.append(np.nan)
+                #dayChange2.append(np.nan)
                 monthChange.append(np.nan)
-                monthChange2.append(np.nan)
+                #monthChange2.append(np.nan)
                 yearChange.append(np.nan)
-                yearChange2.append(np.nan)
+                #yearChange2.append(np.nan)
         df2.insert(3,"Current Price", price,True)
         df2.insert(4,"1 Day %Change",dayChange,True)
-        df2.insert(5,"5 Day %Change",dayChange2,True)
-        df2.insert(6,"1 Month %Change",monthChange,True)
-        df2.insert(7,"6 Month %Change",monthChange2,True)
-        df2.insert(8,"1 Year %Change",yearChange,True)
-        df2.insert(9,"5 Year %Change",yearChange2,True)
+        #df2.insert(5,"5 Day %Change",dayChange2,True)
+        df2.insert(5,"1 Month %Change",monthChange,True)
+        #df2.insert(7,"6 Month %Change",monthChange2,True)
+        df2.insert(6,"1 Year %Change",yearChange,True)
+        #df2.insert(9,"5 Year %Change",yearChange2,True)
         df2 = df2.drop(df2.index[-1])
         df2 = df2.set_index('Name')
         df2.to_csv('Top50.csv')
@@ -954,6 +958,27 @@ class Options:
         
 
 
+            
+        
+
+    #def makeTaylorApproximation
+    ##
+#stockList = []
+#uploaded_data = open("stocks.csv", "r")
+#df = pd.read_csv(uploaded_data)
+#for x in range(len(df['Symbol'])):
+#    try:
+#        stockList.append(Stock(df['Symbol'][x]))
+#    except:
+#        pass
+#df = ProfitableSort(stockList,df).returnDf()
+#print(df)
+
+
+#The Objects were all created, down below is the code regarding the streamlit library itself. 
+#The Following libraries are used in the upcoming code segment
+#import functools
+
 uploaded_data = open("stocks.csv", "r")
 df = pd.read_csv(uploaded_data)
 stockList = list(df['Symbol'].unique())
@@ -1054,8 +1079,8 @@ def main() -> None:
     #with st.expander("Cleaned Data"):
     #    st.write(df)
     symbols = list(df['Symbol'].unique())
-    if st.sidebar.button("Click this button if you want the most recent stock market data."):
-        st.sidebar.write("It takes approximately 5 minutes to get all of the most recent data.")
+    if st.sidebar.button("Click this button if you want the most recent stock market price data."):
+        st.sidebar.write("It takes approximately 2 minutes to get all of the most recent data.")
         st.sidebar.write("Thank you for your patience.")
         stockList = []
         uploaded_data = open("stocks.csv", "r")
@@ -1065,8 +1090,7 @@ def main() -> None:
                 stockList.append(Stock(df['Symbol'][x]))
             except:
                 pass
-        df = ProfitableSort(stockList,df).returnDf()    
-
+        df = ProfitableSort(stockList,df).returnDf()  
 
     st.sidebar.subheader("Filter Displayed Accounts")
 
@@ -1077,7 +1101,7 @@ def main() -> None:
     st.sidebar.subheader("Filter Displayed Tickers")
 
     
-    name_selections = list(df['Name'].unique())
+    #name_selections = list(df['Name'].unique())
     symbols = list(df.loc[df['Sector'].isin(sector_selections), "Symbol"].unique())
     symbol_selections = st.sidebar.multiselect(
         "Select Ticker Symbols to View", options=symbols, default=symbols
@@ -1147,14 +1171,13 @@ def main() -> None:
         st.markdown(
                 f"""
                 * Ticker Symbol : {specific.getTicker()}
-                * {specific.isSP500()}    
+                * {specific.isSP500()}    #Using Linear Search 
                 * Current Price : ${specific.getCurrPrice()}
                 * Company Info :  {specific.getCompanyInfo()}
                 Per Yahoo Finance
 
                 """
             )    
-        #specific.isSP500 uses linear Search
         st.subheader("Most Recent Articles")
         for i in range(3):
             st.markdown(
@@ -1174,7 +1197,7 @@ def main() -> None:
         strikePrice = float(st.number_input("Enter the Strike Price"))
         time = float(st.number_input("Enter the Time to Expiration in Years"))
         riskFreeRate = float(st.number_input("Enter the Risk Free Rate"))
-        if(bool(ticker)and bool(strikePrice) and bool(time) and bool(riskFreeRate)):
+        if(ticker != None and strikePrice != None and time != None and riskFreeRate != None):
             st.markdown(
                 f"""
                 * Ticker Symbol: {ticker}
@@ -1188,39 +1211,38 @@ def main() -> None:
     except:
         pass
     try:
-        if(bool(ticker)and bool(strikePrice) and bool(time) and bool(riskFreeRate)):
-            st.subheader('1st Degree Taylor Polynomial Call vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks1st())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Call Option Price$")
-            st.subheader('1st Degree Taylor Polynomial Put vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut1st())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Put Option Price$")
-            st.subheader('2nd Degree Taylor Polynomial  Call vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks2nd())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Call Option Price$")
-            st.subheader('2nd Degree Taylor Polynomial Put vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut2nd())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Put Option Price$")
-            st.subheader('4th Degree Taylor Polynomial Call vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks4th())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Call Option Price$")
-            st.subheader('4th Degree Taylor Polynomial Put vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut4th())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Put Option Price$")
-            st.subheader('8th Degree Taylor Polynomial Call vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks8th())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Call Option Price$")
-            st.subheader('8th Degree Taylor Polynomial Put vs. Black-Scholes Model')
-            st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut8th())
-            st.write("X Axis: Time to Expiration(Years)")
-            st.write("Y Axis: Put Option Price$")
+        st.subheader('1st Degree Taylor Polynomial Call vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks1st())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Call Option Price$")
+        st.subheader('1st Degree Taylor Polynomial Put vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut1st())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Put Option Price$")
+        st.subheader('2nd Degree Taylor Polynomial  Call vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks2nd())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Call Option Price$")
+        st.subheader('2nd Degree Taylor Polynomial Put vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut2nd())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Put Option Price$")
+        st.subheader('4th Degree Taylor Polynomial Call vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks4th())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Call Option Price$")
+        st.subheader('4th Degree Taylor Polynomial Put vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut4th())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Put Option Price$")
+        st.subheader('8th Degree Taylor Polynomial Call vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).makeTaylorApproximationTimeGreeks8th())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Call Option Price$")
+        st.subheader('8th Degree Taylor Polynomial Put vs. Black-Scholes Model')
+        st.pyplot(Options(ticker, strikePrice, time, riskFreeRate).taylorPolynomialPut8th())
+        st.write("X Axis: Time to Expiration(Years)")
+        st.write("Y Axis: Put Option Price$")
     except:
         pass
 #    def draw_bar(y_val: str) -> None:
