@@ -1055,7 +1055,7 @@ def filter_data(
 
 
 def main() -> None:
-    st.title("Finance App with BS Option Pricing Calculator")
+    st.title("Shyam's Investment Tool")
 
     with st.expander("OVERVIEW"):
         st.write(Path("README.md").read_text())
