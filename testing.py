@@ -1171,7 +1171,7 @@ def main() -> None:
         st.markdown(
                 f"""
                 * Ticker Symbol : {specific.getTicker()}
-                * {specific.isSP500()}    #Using Linear Search 
+                * {specific.isSP500()}    
                 * Current Price : ${specific.getCurrPrice()}
                 * Company Info :  {specific.getCompanyInfo()}
                 Per Yahoo Finance
