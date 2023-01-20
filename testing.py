@@ -1197,6 +1197,7 @@ def main() -> None:
                 * Company Info :  {specific.getCompanyInfo()}
                 * Articles ARE NOT AVAILABLE
                 """
+        )
         pass
     try:
         #Black-Scholes Model for Options Pricing
