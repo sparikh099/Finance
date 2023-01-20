@@ -1189,6 +1189,14 @@ def main() -> None:
                 """
             )
     except:
+        st.markdown(
+                f"""
+                * Ticker Symbol : {specific.getTicker()}
+                * {specific.isSP500()}    
+                * Current Price : ${specific.getCurrPrice()}
+                * Company Info :  {specific.getCompanyInfo()}
+                * Articles ARE NOT AVAILABLE
+                """
         pass
     try:
         #Black-Scholes Model for Options Pricing
