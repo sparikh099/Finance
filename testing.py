@@ -1298,7 +1298,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    print("nothinh")
     st.set_page_config(
         "Shyam's Finance Application",
         "📊",
