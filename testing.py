@@ -861,15 +861,12 @@ def main() -> None:
         st.write(Path("README.md").read_text())
 
 #    st.subheader("Upload your CSV from Fidelity")
-#    uploaded_data = st.file_uploader(
-#        "Drag and Drop or Click to Upload", type=".csv", accept_multiple_files=False
-#    )
-
-#    if uploaded_data is None:
-#        st.info("Using example data. Upload a file above to use your own data!")
-#        uploaded_data = open("example.csv", "r")
-#    else:
-#        st.success("Uploaded your file!")
+    uploaded_file = st.file_uploader(
+    "Choose your database", accept_multiple_files=False)
+    if uploaded_file is not None:
+        file_name = uploaded_file
+    else:
+        file_name = "DatabaseSample.xlsx"
     uploaded_data = open("Top50.csv", "r")
     df = pd.read_csv(uploaded_data)
     #with st.expander("Raw Dataframe"):
