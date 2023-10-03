@@ -886,6 +886,8 @@ def main() -> None:
         df = pd.read_csv(uploaded_data)
         for x in range(len(df['Symbol'])):
             stockList.append(Stock(df['Symbol'][x]))
+            st.sidebar.write(stockList)
+
         st.sidebar.write(len(stockList))
         df = ProfitableSort(stockList,df).returnDf()  
 
