@@ -884,11 +884,9 @@ def main() -> None:
         stockList = []
         uploaded_data = open("stocks.csv", "r")
         df = pd.read_csv(uploaded_data)
+        st.sidebar.write(len(df['Symbol']))
         for x in range(len(df['Symbol'])):
             stockList.append(Stock(df['Symbol'][x]))
-            st.sidebar.write(stockList)
-
-        st.sidebar.write(len(stockList))
         df = ProfitableSort(stockList,df).returnDf()  
 
     st.sidebar.subheader("Filter Displayed Accounts")
