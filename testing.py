@@ -885,10 +885,7 @@ def main() -> None:
         uploaded_data = open("stocks.csv", "r")
         df = pd.read_csv(uploaded_data)
         for x in range(len(df['Symbol'])):
-            try:
-                stockList.append(Stock(df['Symbol'][x]))
-            except:
-                pass
+            stockList.append(Stock(df['Symbol'][x]))
         st.sidebar.write(len(stockList))
         df = ProfitableSort(stockList,df).returnDf()  
 
