@@ -796,7 +796,7 @@ COMMON_ARGS = {
 }
 
 
-@st.experimental_memo
+@st.cache_data
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     Take Raw Fidelity Dataframe and return usable dataframe.
@@ -831,7 +831,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-@st.experimental_memo
+@st.cache_data
 def filter_data(
     df: pd.DataFrame, account_selections: list[str], symbol_selections: list[str]
 ) -> pd.DataFrame:
@@ -860,13 +860,6 @@ def main() -> None:
     with st.expander("OVERVIEW"):
         st.write(Path("README.md").read_text())
 
-#    st.subheader("Upload your CSV from Fidelity")
-    uploaded_file = st.file_uploader(
-    "Choose your database", accept_multiple_files=False)
-    if uploaded_file is not None:
-        file_name = uploaded_file
-    else:
-        file_name = "DatabaseSample.xlsx"
     uploaded_data = open("Top50.csv", "r")
     df = pd.read_csv(uploaded_data)
     #with st.expander("Raw Dataframe"):
