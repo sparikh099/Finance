@@ -889,7 +889,7 @@ def main() -> None:
                 stockList.append(Stock(df['Symbol'][x]))
             except:
                 pass
-        st.sidebar.write(len(stockList)
+        st.sidebar.write(len(stockList))
         df = ProfitableSort(stockList,df).returnDf()  
 
     st.sidebar.subheader("Filter Displayed Accounts")
