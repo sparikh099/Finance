@@ -4,14 +4,12 @@
 #Python - 3.9.7
 #Importing all the libraries necessary for this project
 import functools
-from pathlib import Path
 import streamlit as st
 from st_aggrid import AgGrid
 from st_aggrid.shared import JsCode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 import plotly.express as px
 from PIL import Image
-import yfinance as yf
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
@@ -19,6 +17,17 @@ from scipy.stats import norm
 from math import exp, log,sqrt
 from sympy import Symbol, diff, erf, sqrt, init_printing, ln, exp, diff, lambdify
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+import appdirs as ad
+
+CACHE_DIR = ".cache"
+
+# Force appdirs to say that the cache dir is .cache
+ad.user_cache_dir = lambda *args: CACHE_DIR
+
+# Create the cache dir if it doesn't exist
+Path(CACHE_DIR).mkdir(exist_ok=True)
 
 #%matplotlib inline
 class News:
