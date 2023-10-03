@@ -28,7 +28,7 @@ ad.user_cache_dir = lambda *args: CACHE_DIR
 
 # Create the cache dir if it doesn't exist
 Path(CACHE_DIR).mkdir(exist_ok=True)
-
+import yfinance as yf
 #%matplotlib inline
 class News:
     def __init__(self,ticker):
@@ -884,10 +884,11 @@ def main() -> None:
         stockList = []
         uploaded_data = open("stocks.csv", "r")
         df = pd.read_csv(uploaded_data)
-        st.sidebar.write(len(df['Symbol']))
         for x in range(len(df['Symbol'])):
-            stockList.append(Stock(df['Symbol'][x]))
-            st.sidebar.write(len(stockList))
+            try:
+                stockList.append(Stock(df['Symbol'][x]))
+            except:
+                pass
         df = ProfitableSort(stockList,df).returnDf()  
 
     st.sidebar.subheader("Filter Displayed Accounts")
