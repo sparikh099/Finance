@@ -175,7 +175,7 @@ class ProfitableSort:
         self.sortedArray = arr1
         self.data = df
     def getSpecificTicker(self,ticker):
-        arr = self.aray
+        arr = self.array
         for i in range(len(stockArr)):
             try:
                 if(ticker == arr[i]):
